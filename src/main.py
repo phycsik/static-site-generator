@@ -74,12 +74,14 @@ def main():
     # node = TextNode('This is some anchor text', TextType.LINK, 'https://www.boot.dev')
     # print(node
     basepath = '/'
-    if sys.argv[1]: basepath = sys.argv[1]
-    cleanup('./public')
-    print(copy_directory('./static', './public'))
-    print(copy_directory('./content', './public'))
+    if len(sys.argv) > 1: basepath = sys.argv[1]
+    # cleanup('./public')
+    # print(copy_directory('./static', './public'))
+    # print(copy_directory('./content', './public'))
     # generate_pages('content/', 'template.html', 'public/')
     # generate_pages('content/', 'template.html', 'public/', basepath)
+    cleanup('docs/')
+    print(copy_directory('./static', 'docs'))
     generate_pages('content/', 'template.html', 'docs/', basepath)
     # print(generate_pages('content/', 'template.html', 'public/'))
 

@@ -44,8 +44,8 @@ def generate_page(from_path, template_path, dest_path, basepath):
     # html.replace(title, '')
     template_file = template_file.replace('{{ Title }}', title)
     template_file = template_file.replace('{{ Content }}', html)
-    template_file = template_file.replace('href="/', f'href="/{basepath}')
-    template_file = template_file.replace('src="/', f'src="/{basepath}')
+    template_file = template_file.replace('href="/', f'href="{basepath}')
+    template_file = template_file.replace('src="/', f'src="{basepath}')
     if not os.path.exists(os.path.dirname(dest_path)):
         os.makedirs(os.path.dirname(dest_path))
     # with open(template_file) as file:
@@ -72,8 +72,9 @@ def generate_pages(source, template, destination, basepath):
 
 def main():
     # node = TextNode('This is some anchor text', TextType.LINK, 'https://www.boot.dev')
-    # print(node)
-    basepath = sys.argv[0] = '/'
+    # print(node
+    basepath = '/'
+    if sys.argv[1]: basepath = sys.argv[1]
     cleanup('./public')
     print(copy_directory('./static', './public'))
     print(copy_directory('./content', './public'))
